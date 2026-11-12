@@ -1,0 +1,38 @@
+# CoAbility - Team Members Directory
+# To add, remove, or modify team members, simply edit this YAML list.
+
+- id: "member-1"
+  name: "Founder & Executive Director"
+  role: "Leadership & Strategy"
+  is_placeholder: true
+  bio: "Dedicated to bridging mechanical engineering, accessible design, and community empathy to develop practical, personalized 3D-printed tools that foster independence."
+  avatar_color: "from-blue-600 to-cyan-500"
+  initials: "FD"
+  linkedin: "https://www.linkedin.com/"
+
+- id: "member-2"
+  name: "Lead Design & Mechanical Engineer"
+  role: "3D CAD & Prototyping"
+  is_placeholder: true
+  bio: "Focuses on iterative CAD modeling, parametric design, and rapid additive manufacturing to produce durable, ergonomic, and custom-fit assistive devices."
+  avatar_color: "from-cyan-600 to-sky-400"
+  initials: "ME"
+  linkedin: "https://www.linkedin.com/"
+
+- id: "member-3"
+  name: "Occupational Therapy Advisor"
+  role: "Clinical & Accessibility Consultation"
+  is_placeholder: true
+  bio: "Guides human-centered ergonomics and biomechanics, ensuring each 3D-printed attachment genuinely meets individual dexterity needs and physical safety requirements."
+  avatar_color: "from-blue-700 to-indigo-500"
+  initials: "OT"
+  linkedin: "https://www.linkedin.com/"
+
+- id: "member-4"
+  name: "Community & Volunteer Coordinator"
+  role: "Outreach & Maker Network"
+  is_placeholder: true
+  bio: "Connects individuals, families, educators, and local maker spaces with CoAbility's open-source assistive device programs and volunteer initiatives."
+  avatar_color: "from-sky-500 to-teal-400"
+  initials: "CC"
+  linkedin: "https://www.linkedin.com/"

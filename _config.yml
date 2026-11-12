@@ -1,0 +1,40 @@
+# CoAbility - Jekyll Site Configuration
+title: "CoAbility"
+tagline: "Assistive Innovation & 3D Additive Solutions"
+email: "contact@coability.org"
+description: >-
+  CoAbility is a nonprofit initiative dedicated to improving the lives of children
+  and individuals with disabilities through accessible, innovative, and personalized
+  3D-printed assistive devices.
+
+# URL settings (leave baseurl empty unless deploying to a GitHub Pages project subfolder like /coability-website)
+baseurl: ""
+url: ""
+
+# Markdown & Syntax Highlighting
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+# Collections & Defaults
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+
+# Excluded files from Jekyll build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor/
+  - .sass-cache/
+  - .jekyll-cache/
+  - .git/
+
+# Plugins compatible with GitHub Pages
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag

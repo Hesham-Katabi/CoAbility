@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include head.html %}
+<body class="bg-white text-slate-900 min-h-screen flex flex-col antialiased">
+
+  <!-- Accessible Skip to Content Link -->
+  <a href="#main-content" class="skip-to-content">Skip to main content</a>
+
+  <!-- Global Header Navigation -->
+  {% include header.html %}
+
+  <!-- Main Content Landmark -->
+  <main id="main-content" class="flex-grow">
+    {{ content }}
+  </main>
+
+  <!-- Global Footer -->
+  {% include footer.html %}
+
+  <!-- Reusable Interactions & Mobile Menu Script -->
+  <script src="{{ '/assets/js/components.js' | relative_url }}"></script>
+</body>
+</html>

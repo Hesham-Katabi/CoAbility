@@ -1,0 +1,72 @@
+<!-- Global Accessible Header -->
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 transition-all">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      
+      <!-- Brand Logo & Name -->
+      <a href="{{ '/' | relative_url }}" class="flex items-center gap-3.5 group rounded-xl p-1 focus-visible:ring-2 focus-visible:ring-blue-600" aria-label="CoAbility Home">
+        <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="CoAbility Logo" class="w-10 h-10 object-contain transition-transform duration-300 group-hover:scale-105">
+        <div class="flex flex-col">
+          <span class="text-2xl font-extrabold tracking-tight text-slate-900 group-hover:text-blue-600 transition-colors">
+            Co<span class="text-gradient">Ability</span>
+          </span>
+          <span class="text-[10px] uppercase tracking-wider font-semibold text-slate-400 -mt-1">
+            Assistive Innovation
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links with Dynamic Active Indicator -->
+      <nav class="hidden md:flex items-center gap-1 lg:gap-2" aria-label="Main Navigation">
+        <a href="{{ '/' | relative_url }}" class="nav-link px-4 py-2 rounded-full text-sm font-semibold transition-colors {% if page.url == '/' or page.url == '/index.html' %}text-blue-600 bg-blue-50/60 font-bold{% else %}text-slate-600 hover:text-blue-600 hover:bg-blue-50/60{% endif %}" {% if page.url == '/' or page.url == '/index.html' %}aria-current="page"{% endif %}>Home</a>
+        
+        <a href="{{ '/mission.html' | relative_url }}" class="nav-link px-4 py-2 rounded-full text-sm font-semibold transition-colors {% if page.url contains 'mission' %}text-blue-600 bg-blue-50/60 font-bold{% else %}text-slate-600 hover:text-blue-600 hover:bg-blue-50/60{% endif %}" {% if page.url contains 'mission' %}aria-current="page"{% endif %}>Our Mission</a>
+        
+        <a href="{{ '/team.html' | relative_url }}" class="nav-link px-4 py-2 rounded-full text-sm font-semibold transition-colors {% if page.url contains 'team' %}text-blue-600 bg-blue-50/60 font-bold{% else %}text-slate-600 hover:text-blue-600 hover:bg-blue-50/60{% endif %}" {% if page.url contains 'team' %}aria-current="page"{% endif %}>Our Team</a>
+        
+        <a href="{{ '/projects.html' | relative_url }}" class="nav-link px-4 py-2 rounded-full text-sm font-semibold transition-colors {% if page.url contains 'projects' %}text-blue-600 bg-blue-50/60 font-bold{% else %}text-slate-600 hover:text-blue-600 hover:bg-blue-50/60{% endif %}" {% if page.url contains 'projects' %}aria-current="page"{% endif %}>Our Projects</a>
+        
+        <a href="{{ '/contact.html' | relative_url }}" class="nav-link px-4 py-2 rounded-full text-sm font-semibold transition-colors {% if page.url contains 'contact' %}text-blue-600 bg-blue-50/60 font-bold{% else %}text-slate-600 hover:text-blue-600 hover:bg-blue-50/60{% endif %}" {% if page.url contains 'contact' %}aria-current="page"{% endif %}>Contact</a>
+      </nav>
+
+      <!-- Desktop CTA Action -->
+      <div class="hidden md:flex items-center gap-3">
+        <a href="{{ '/contact.html' | relative_url }}" class="btn-primary text-sm">
+          <span>Get Involved</span>
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Mobile Menu Toggle Button -->
+      <div class="flex md:hidden">
+        <button type="button" id="mobile-menu-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation menu" class="p-2.5 rounded-xl text-slate-700 hover:text-blue-600 hover:bg-slate-100 focus-visible:ring-2 focus-visible:ring-blue-600">
+          <svg class="w-6 h-6 menu-open-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+          <svg class="w-6 h-6 menu-close-icon hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Mobile Slide-Down Menu -->
+  <div id="mobile-menu" class="hidden md:hidden border-b border-slate-100 bg-white/98 px-4 pt-3 pb-6 shadow-xl transition-all">
+    <nav class="flex flex-col gap-1.5" aria-label="Mobile Navigation">
+      <a href="{{ '/' | relative_url }}" class="nav-link px-4 py-3 rounded-xl text-base font-semibold {% if page.url == '/' or page.url == '/index.html' %}text-blue-600 bg-blue-50{% else %}text-slate-700 hover:bg-slate-50{% endif %}">Home</a>
+      <a href="{{ '/mission.html' | relative_url }}" class="nav-link px-4 py-3 rounded-xl text-base font-semibold {% if page.url contains 'mission' %}text-blue-600 bg-blue-50{% else %}text-slate-700 hover:bg-slate-50{% endif %}">Our Mission</a>
+      <a href="{{ '/team.html' | relative_url }}" class="nav-link px-4 py-3 rounded-xl text-base font-semibold {% if page.url contains 'team' %}text-blue-600 bg-blue-50{% else %}text-slate-700 hover:bg-slate-50{% endif %}">Our Team</a>
+      <a href="{{ '/projects.html' | relative_url }}" class="nav-link px-4 py-3 rounded-xl text-base font-semibold {% if page.url contains 'projects' %}text-blue-600 bg-blue-50{% else %}text-slate-700 hover:bg-slate-50{% endif %}">Our Projects</a>
+      <a href="{{ '/contact.html' | relative_url }}" class="nav-link px-4 py-3 rounded-xl text-base font-semibold {% if page.url contains 'contact' %}text-blue-600 bg-blue-50{% else %}text-slate-700 hover:bg-slate-50{% endif %}">Contact &amp; Get Involved</a>
+    </nav>
+    <div class="mt-4 pt-4 border-t border-slate-100">
+      <a href="{{ '/contact.html' | relative_url }}" class="btn-primary w-full text-center py-3">
+        Get Involved
+      </a>
+    </div>
+  </div>
+</header>
