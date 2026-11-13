@@ -5,148 +5,107 @@ description: "Explore CoAbility's preliminary 3D-printed assistive device concep
 ---
 
 <!-- Projects Hero Header -->
-<section class="py-16 md:py-20 bg-slate-50/70 border-b border-slate-100 hero-mesh">
+<section class="py-16 md:py-24 bg-slate-50/70 border-b border-slate-100 hero-mesh">
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    <span class="badge-pill badge-blue mb-4">Device Catalog &amp; Prototypes</span>
     <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight mb-6">
-      Preliminary <span class="text-gradient">Assistive Concepts</span> &amp; Prototypes
+      Our <span class="text-gradient">Prototypes</span> &amp; Concepts
     </h1>
-    <p class="text-lg sm:text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto font-normal mb-8">
-      A showcase of our exploratory 3D-printed tools designed to solve specific daily dexterity and mobility obstacles.
+    <p class="text-lg sm:text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto font-normal">
+      A look at our exploratory 3D-printed devices designed to solve everyday dexterity and mobility challenges.
     </p>
-
-    <!-- Development Notice -->
-    <div class="inline-flex items-center gap-2.5 px-4 py-2.5 rounded-2xl bg-amber-50 border border-amber-200 text-amber-900 text-xs sm:text-sm font-medium max-w-2xl text-left sm:text-center">
-      <svg class="w-5 h-5 text-amber-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
-      </svg>
-      <span><strong>Development Notice:</strong> These projects represent preliminary exploratory concepts and active prototype designs currently being modeled and refined.</span>
-    </div>
   </div>
 </section>
 
-<!-- Projects Grid Section -->
+<!-- Projects Catalog Section -->
 <section class="py-20 bg-white border-b border-slate-100">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     
-    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-12">
-      <div>
-        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">Active Designs</h2>
-        <p class="text-sm text-slate-500">Each design addresses a verified daily accessibility barrier</p>
-      </div>
-      <span class="text-xs font-semibold px-3 py-1.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200 w-fit">
-        Data Source: <code class="text-blue-600 font-mono">_data/projects.yml</code>
-      </span>
+    <div class="mb-12">
+      <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">Active Concepts</h2>
     </div>
 
-    <!-- Rendered Directly from site.data.projects -->
-    <div id="projects-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <!-- Clean, Breathable Grid -->
+    <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
       {% for proj in site.data.projects %}
-      <article class="bg-white rounded-2xl border border-slate-200/80 overflow-hidden interactive-card shadow-sm hover:shadow-lg transition-all flex flex-col">
-        <!-- Device Schematic Graphic Header -->
-        <div class="h-52 bg-gradient-to-br from-slate-50 via-blue-50/40 to-sky-50 relative p-6 flex flex-col justify-between border-b border-slate-100 bg-grid-pattern">
-          <div class="flex items-center justify-between">
-            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-white/90 text-blue-700 shadow-sm border border-slate-200/60 backdrop-blur-sm">
-              {{ proj.category }}
-            </span>
-            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold {% if proj.status_type == 'prototype' %}bg-blue-100 text-blue-800 border border-blue-200{% else %}bg-amber-100 text-amber-800 border border-amber-200{% endif %}">
-              <span class="w-2 h-2 rounded-full {% if proj.status_type == 'prototype' %}bg-blue-600 animate-pulse{% else %}bg-amber-500{% endif %}" aria-hidden="true"></span>
-              {{ proj.status }}
-            </span>
-          </div>
+      <article class="bg-white rounded-2xl border border-slate-200/90 overflow-hidden interactive-card shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+        
+        <div>
+          <!-- Visual Graphic Container -->
+          <div class="h-44 bg-slate-50 relative p-6 flex flex-col justify-between border-b border-slate-100">
+            <div class="flex items-center justify-between">
+              <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-white text-slate-700 shadow-sm border border-slate-200/80">
+                {{ proj.category }}
+              </span>
+              <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium text-blue-700 bg-blue-50 border border-blue-100">
+                {{ proj.status }}
+              </span>
+            </div>
 
-          <!-- Schematic Visual Graphic -->
-          <div class="flex items-center justify-center my-auto py-2">
-            {% if proj.icon_type == 'zipper' %}
-              <svg class="w-24 h-24 text-blue-600 drop-shadow-md" viewBox="0 0 100 100" fill="none" aria-label="Schematic of ergonomic zipper pull loop">
-                <circle cx="50" cy="50" r="38" stroke="#1254D8" stroke-width="8" stroke-linecap="round"/>
-                <circle cx="50" cy="50" r="22" fill="#FFFFFF" stroke="#0284C7" stroke-width="3" stroke-dasharray="4 3"/>
-                <path d="M42 16L50 8L58 16V24H42V16Z" fill="#1254D8"/>
-                <path d="M40 50H60M42 43H58M42 57H58" stroke="#38BDF8" stroke-width="2.5" stroke-linecap="round"/>
-              </svg>
-            {% elsif proj.icon_type == 'utensil' %}
-              <svg class="w-24 h-24 text-blue-600 drop-shadow-md" viewBox="0 0 100 100" fill="none" aria-label="Schematic of ergonomic utensil grip sleeve">
-                <path d="M30 20C30 14 70 14 70 20C70 40 76 50 76 65C76 80 65 88 50 88C35 88 24 80 24 65C24 50 30 40 30 20Z" fill="#1254D8" opacity="0.9"/>
-                <rect x="44" y="16" width="12" height="68" rx="6" fill="#FFFFFF" stroke="#0B3CA0" stroke-width="2"/>
-                <path d="M30 46C40 48 60 48 70 46M28 58C38 60 62 60 72 58M27 70C37 72 63 72 73 70" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/>
-              </svg>
-            {% elsif proj.icon_type == 'opener' %}
-              <svg class="w-24 h-24 text-blue-600 drop-shadow-md" viewBox="0 0 100 100" fill="none" aria-label="Schematic of one-handed leverage opener">
-                <path d="M20 25L50 80L80 25H68L50 60L32 25H20Z" fill="#1254D8"/>
-                <path d="M36 34L50 60L64 34" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
-                <rect x="15" y="18" width="70" height="10" rx="3" fill="#0B3CA0"/>
-                <circle cx="22" cy="23" r="2.5" fill="#FFFFFF"/>
-                <circle cx="78" cy="23" r="2.5" fill="#FFFFFF"/>
-              </svg>
-            {% else %}
-              <svg class="w-24 h-24 text-blue-600 drop-shadow-md" viewBox="0 0 100 100" fill="none" aria-label="Schematic of ergonomic key turner assist">
-                <ellipse cx="50" cy="38" rx="36" ry="20" fill="#1254D8"/>
-                <circle cx="50" cy="38" r="10" fill="#FFFFFF" stroke="#0284C7" stroke-width="3"/>
-                <rect x="42" y="46" width="16" height="40" rx="4" fill="#0B3CA0"/>
-                <path d="M22 26C28 18 42 16 50 16" stroke="#38BDF8" stroke-width="2.5" stroke-linecap="round"/>
-                <path d="M78 50C72 58 58 60 50 60" stroke="#38BDF8" stroke-width="2.5" stroke-linecap="round"/>
-              </svg>
-            {% endif %}
-          </div>
-
-          <div class="text-[11px] font-mono text-slate-400 text-right">
-            ID: #{{ proj.id }}
-          </div>
-        </div>
-
-        <!-- Content Area -->
-        <div class="p-6 md:p-8 flex-1 flex flex-col justify-between">
-          <div>
-            <h3 class="text-xl md:text-2xl font-bold text-slate-900 mb-3 tracking-tight">
-              {{ proj.title }}
-            </h3>
-            <p class="text-slate-600 text-sm md:text-base leading-relaxed mb-6">
-              {{ proj.short_desc }}
-            </p>
-
-            <!-- Problem vs Solution Breakdown -->
-            <div class="space-y-4 mb-6">
-              <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/60">
-                <div class="flex items-center gap-2 text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5">
-                  <svg class="w-4 h-4 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
-                  </svg>
-                  The Accessibility Challenge
-                </div>
-                <p class="text-xs md:text-sm text-slate-600 leading-relaxed">
-                  {{ proj.challenge }}
-                </p>
-              </div>
-
-              <div class="p-4 rounded-xl bg-blue-50/60 border border-blue-100">
-                <div class="flex items-center gap-2 text-xs font-bold text-blue-900 uppercase tracking-wider mb-1.5">
-                  <svg class="w-4 h-4 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                  </svg>
-                  The 3D-Printed Solution
-                </div>
-                <p class="text-xs md:text-sm text-slate-700 leading-relaxed">
-                  {{ proj.solution }}
-                </p>
-              </div>
+            <!-- Clean Schematic Graphic -->
+            <div class="flex items-center justify-center my-auto py-1">
+              {% if proj.icon_type == 'zipper' %}
+                <svg class="w-20 h-20 text-blue-600 drop-shadow-sm" viewBox="0 0 100 100" fill="none" aria-label="Ergonomic zipper pull schematic">
+                  <circle cx="50" cy="50" r="38" stroke="#1254D8" stroke-width="8" stroke-linecap="round"/>
+                  <circle cx="50" cy="50" r="22" fill="#FFFFFF" stroke="#0284C7" stroke-width="3" stroke-dasharray="4 3"/>
+                  <path d="M42 16L50 8L58 16V24H42V16Z" fill="#1254D8"/>
+                  <path d="M40 50H60M42 43H58M42 57H58" stroke="#38BDF8" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
+              {% elsif proj.icon_type == 'utensil' %}
+                <svg class="w-20 h-20 text-blue-600 drop-shadow-sm" viewBox="0 0 100 100" fill="none" aria-label="Ergonomic utensil grip schematic">
+                  <path d="M30 20C30 14 70 14 70 20C70 40 76 50 76 65C76 80 65 88 50 88C35 88 24 80 24 65C24 50 30 40 30 20Z" fill="#1254D8" opacity="0.9"/>
+                  <rect x="44" y="16" width="12" height="68" rx="6" fill="#FFFFFF" stroke="#0B3CA0" stroke-width="2"/>
+                  <path d="M30 46C40 48 60 48 70 46M28 58C38 60 62 60 72 58M27 70C37 72 63 72 73 70" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
+              {% elsif proj.icon_type == 'opener' %}
+                <svg class="w-20 h-20 text-blue-600 drop-shadow-sm" viewBox="0 0 100 100" fill="none" aria-label="One-handed opener schematic">
+                  <path d="M20 25L50 80L80 25H68L50 60L32 25H20Z" fill="#1254D8"/>
+                  <path d="M36 34L50 60L64 34" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+                  <rect x="15" y="18" width="70" height="10" rx="3" fill="#0B3CA0"/>
+                  <circle cx="22" cy="23" r="2.5" fill="#FFFFFF"/>
+                  <circle cx="78" cy="23" r="2.5" fill="#FFFFFF"/>
+                </svg>
+              {% else %}
+                <svg class="w-20 h-20 text-blue-600 drop-shadow-sm" viewBox="0 0 100 100" fill="none" aria-label="Ergonomic key turner schematic">
+                  <ellipse cx="50" cy="38" rx="36" ry="20" fill="#1254D8"/>
+                  <circle cx="50" cy="38" r="10" fill="#FFFFFF" stroke="#0284C7" stroke-width="3"/>
+                  <rect x="42" y="46" width="16" height="40" rx="4" fill="#0B3CA0"/>
+                  <path d="M22 26C28 18 42 16 50 16" stroke="#38BDF8" stroke-width="2.5" stroke-linecap="round"/>
+                  <path d="M78 50C72 58 58 60 50 60" stroke="#38BDF8" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
+              {% endif %}
             </div>
           </div>
 
-          <!-- Technical Specs Tags -->
-          <div class="pt-4 border-t border-slate-100 flex flex-wrap gap-2 text-xs text-slate-500">
-            <span class="inline-flex items-center gap-1 bg-slate-100 px-2.5 py-1 rounded-md">
-              <strong class="text-slate-700 font-medium">Material:</strong> {{ proj.material }}
-            </span>
-            <span class="inline-flex items-center gap-1 bg-slate-100 px-2.5 py-1 rounded-md">
-              <strong class="text-slate-700 font-medium">Est. Print:</strong> {{ proj.print_time }}
-            </span>
-            {% if proj.customization %}
-            <span class="inline-flex items-center gap-1 bg-blue-50 text-blue-700 px-2.5 py-1 rounded-md">
-              <strong class="font-medium">Customizable:</strong> Yes
-            </span>
-            {% endif %}
+          <!-- Content Area -->
+          <div class="p-6 md:p-8">
+            <h3 class="text-xl font-bold text-slate-900 mb-2">
+              {{ proj.title }}
+            </h3>
+            <p class="text-slate-600 text-sm leading-relaxed mb-6">
+              {{ proj.short_desc }}
+            </p>
+
+            <!-- Clean, Uncluttered Problem & Solution Details -->
+            <div class="space-y-4 pt-4 border-t border-slate-100 text-sm">
+              <div>
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-1">The Need</span>
+                <p class="text-slate-600 text-sm leading-relaxed">{{ proj.challenge }}</p>
+              </div>
+
+              <div>
+                <span class="text-xs font-bold uppercase tracking-wider text-blue-600 block mb-1">3D Solution</span>
+                <p class="text-slate-700 text-sm leading-relaxed">{{ proj.solution }}</p>
+              </div>
+            </div>
           </div>
         </div>
+
+        <!-- Clean Metadata Footer -->
+        <div class="px-6 md:px-8 py-4 bg-slate-50/60 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+          <span><strong class="text-slate-700 font-medium">Material:</strong> {{ proj.material }}</span>
+          <span><strong class="text-slate-700 font-medium">Est. Print:</strong> {{ proj.print_time }}</span>
+        </div>
+
       </article>
       {% endfor %}
     </div>
@@ -154,23 +113,20 @@ description: "Explore CoAbility's preliminary 3D-printed assistive device concep
   </div>
 </section>
 
-<!-- Suggest a Challenge Section -->
-<section class="py-20 bg-slate-50/70 border-b border-slate-100">
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    <div class="w-12 h-12 rounded-2xl bg-cyan-100 text-cyan-700 flex items-center justify-center mx-auto mb-6">
-      <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
-      </svg>
-    </div>
+<!-- Suggest a Device Idea Section -->
+<section class="py-16 md:py-20 bg-slate-50/70 border-b border-slate-100">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
     <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight mb-3">
       Have an everyday obstacle you'd like us to solve?
     </h2>
-    <p class="text-slate-600 text-base leading-relaxed max-w-xl mx-auto mb-8">
-      The best assistive devices come directly from lived experience. If you, a loved one, or a client struggle with a specific everyday task, share your challenge with us.
+    <p class="text-slate-600 text-sm sm:text-base leading-relaxed mb-8 max-w-lg mx-auto">
+      The best assistive devices come directly from lived experience. If you, a loved one, or a client encounter a daily barrier, let us know.
     </p>
     <a href="{{ '/contact.html#request' | relative_url }}" class="btn-primary">
       <span>Suggest an Assistive Need</span>
-      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+      </svg>
     </a>
   </div>
 </section>
