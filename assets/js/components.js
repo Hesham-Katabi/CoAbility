@@ -6,10 +6,54 @@
 document.addEventListener('DOMContentLoaded', () => {
   initMobileNavigation();
   initActiveNavLink();
+  initFlipCards();
   renderTeamCardsIfEmpty();
   renderProjectCardsIfEmpty();
   initContactFormIfPresent();
 });
+
+/**
+ * 3D Flip Card Interactions for Team Members
+ */
+function initFlipCards() {
+  const cards = document.querySelectorAll('.flip-card-wrapper');
+  cards.forEach(card => {
+    const flipBtn = card.querySelector('.flip-toggle-btn');
+    const backBtn = card.querySelector('.flip-back-btn');
+    const frontFace = card.querySelector('.flip-card-front');
+
+    if (flipBtn) {
+      flipBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        card.classList.add('flipped');
+        card.setAttribute('aria-expanded', 'true');
+        // Focus the back button for keyboard accessibility
+        if (backBtn) backBtn.focus();
+      });
+    }
+
+    if (backBtn) {
+      backBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        card.classList.remove('flipped');
+        card.setAttribute('aria-expanded', 'false');
+        // Return focus to flip button
+        if (flipBtn) flipBtn.focus();
+      });
+    }
+
+    // Clicking anywhere on front face triggers flip
+    if (frontFace) {
+      frontFace.addEventListener('click', (e) => {
+        if (!e.target.closest('a') && !e.target.closest('button')) {
+          card.classList.add('flipped');
+          card.setAttribute('aria-expanded', 'true');
+          if (backBtn) backBtn.focus();
+        }
+      });
+    }
+  });
+}
 
 /**
  * Mobile Navigation Toggle with ARIA & Keyboard Accessibility

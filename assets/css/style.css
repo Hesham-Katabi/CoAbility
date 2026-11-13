@@ -222,6 +222,56 @@ select:focus-visible {
     linear-gradient(to bottom, rgba(226, 232, 240, 0.5) 1px, transparent 1px);
 }
 
+/* 3D Interactive Flip Card System */
+.flip-card-wrapper {
+  perspective: 1200px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  text-align: left;
+  transition: transform 0.65s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.flip-card-wrapper.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.flip-card-front {
+  transform: rotateY(0deg);
+  z-index: 2;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+  z-index: 1;
+}
+
+/* Custom subtle scrollbar for flip card back */
+.flip-card-back::-webkit-scrollbar {
+  width: 4px;
+}
+.flip-card-back::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.4);
+  border-radius: 4px;
+}
+
 /* Respect User Reduced Motion Preferences */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -231,5 +281,17 @@ select:focus-visible {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+  .flip-card-inner {
+    transition: none !important;
+  }
+  .flip-card-wrapper.flipped .flip-card-front {
+    display: none;
+  }
+  .flip-card-wrapper:not(.flipped) .flip-card-back {
+    display: none;
+  }
+  .flip-card-wrapper.flipped .flip-card-back {
+    transform: none;
   }
 }

@@ -1,38 +1,86 @@
-# CoAbility - Team Members Directory
-# To add, remove, or modify team members, simply edit this YAML list.
+# CoAbility - Team Members Roster
+# When actual photos are available, place them in assets/images/team/ and set image: "assets/images/team/filename.jpg"
 
-- id: "member-1"
-  name: "Founder & Executive Director"
-  role: "Leadership & Strategy"
-  is_placeholder: true
-  bio: "Dedicated to bridging mechanical engineering, accessible design, and community empathy to develop practical, personalized 3D-printed tools that foster independence."
+- id: "derek-nguyen"
+  name: "Derek Nguyen"
+  role: "Co-Founder & Engineering"
+  initials: "DN"
   avatar_color: "from-blue-600 to-cyan-500"
-  initials: "FD"
+  image: null
+  short_teaser: "Focused on human-centered engineering and functional 3D-printed assistive mechanisms."
+  bio: "Passionate about using engineering and additive manufacturing to remove everyday barriers. Dedicated to designing practical, durable, and customized 3D-printed devices that empower individuals and children with disabilities to navigate daily life with greater independence."
+  focus_tags:
+    - "3D Prototyping"
+    - "Assistive Tech"
+    - "Mechanical Design"
   linkedin: "https://www.linkedin.com/"
 
-- id: "member-2"
-  name: "Lead Design & Mechanical Engineer"
-  role: "3D CAD & Prototyping"
-  is_placeholder: true
-  bio: "Focuses on iterative CAD modeling, parametric design, and rapid additive manufacturing to produce durable, ergonomic, and custom-fit assistive devices."
+- id: "hesham-katabi"
+  name: "Hesham Katabi"
+  role: "Co-Founder & Strategy"
+  initials: "HK"
   avatar_color: "from-cyan-600 to-sky-400"
-  initials: "ME"
+  image: null
+  short_teaser: "Driving organizational vision, accessibility standards, and community co-design."
+  bio: "Committed to bridging technology innovation with human empathy. Leads CoAbility's organizational initiatives, ensuring that every assistive tool is developed alongside families and therapists to deliver direct, meaningful, and accessible quality-of-life improvements."
+  focus_tags:
+    - "Product Strategy"
+    - "Community Co-Design"
+    - "Accessibility"
   linkedin: "https://www.linkedin.com/"
 
-- id: "member-3"
-  name: "Occupational Therapy Advisor"
-  role: "Clinical & Accessibility Consultation"
-  is_placeholder: true
-  bio: "Guides human-centered ergonomics and biomechanics, ensuring each 3D-printed attachment genuinely meets individual dexterity needs and physical safety requirements."
+- id: "jonny-chang-tang"
+  name: "Jonny Chang-Tang"
+  role: "Design & Prototyping Lead"
+  initials: "JC"
   avatar_color: "from-blue-700 to-indigo-500"
-  initials: "OT"
+  image: null
+  short_teaser: "Specializing in ergonomic modeling, material testing, and rapid iteration."
+  bio: "Brings a focus on precision CAD modeling and tactile testing. Works to optimize 3D print geometries for strength, lightweight comfort, and ergonomic grip across a variety of assistive attachments."
+  focus_tags:
+    - "CAD Modeling"
+    - "Additive Manufacturing"
+    - "Ergonomics"
   linkedin: "https://www.linkedin.com/"
 
-- id: "member-4"
-  name: "Community & Volunteer Coordinator"
-  role: "Outreach & Maker Network"
-  is_placeholder: true
-  bio: "Connects individuals, families, educators, and local maker spaces with CoAbility's open-source assistive device programs and volunteer initiatives."
+- id: "kelly-nguyen"
+  name: "Kelly Nguyen"
+  role: "Community & Clinical Outreach"
+  initials: "KN"
   avatar_color: "from-sky-500 to-teal-400"
-  initials: "CC"
+  image: null
+  short_teaser: "Connecting with families, clinics, and educators to identify daily accessibility needs."
+  bio: "Dedicated to user advocacy and community engagement. Coordinates feedback loops between users, occupational therapists, and makers, helping identify real-world daily challenges that CoAbility can solve."
+  focus_tags:
+    - "Clinical Outreach"
+    - "User Advocacy"
+    - "Accessibility Testing"
   linkedin: "https://www.linkedin.com/"
+
+- id: "collin"
+  name: "Collin"
+  role: "Fabrication & Hardware Lead"
+  initials: "C"
+  avatar_color: "from-blue-600 to-indigo-600"
+  image: null
+  short_teaser: "Managing printer fleet operations, print quality, and material durability."
+  bio: "Passionate about maker technology and 3D printing workflows. Ensures each assistive attachment is printed to rigorous quality, safety, and durability standards using skin-safe, high-impact polymers."
+  focus_tags:
+    - "FDM / Resin Printing"
+    - "Material Science"
+    - "Hardware"
+  linkedin: ""
+
+- id: "emily"
+  name: "Emily"
+  role: "Creative Design & Experience"
+  initials: "E"
+  avatar_color: "from-cyan-500 to-emerald-400"
+  image: null
+  short_teaser: "Creating approachable, empowering, and destigmatizing assistive aesthetics."
+  bio: "Focused on ensuring assistive devices are not just functional, but vibrant, appealing, and confidence-boosting. Champions inclusive design so that users—especially children—feel proud of their daily tools."
+  focus_tags:
+    - "Inclusive Design"
+    - "User Experience"
+    - "Aesthetics"
+  linkedin: ""
