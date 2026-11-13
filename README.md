@@ -78,11 +78,11 @@ git commit -m "Initial commit of CoAbility Jekyll website"
 ```
 
 ### Step 2: Link to Your GitHub Repository
-Create a new repository on GitHub (e.g. `coability` or `coability-website`), then run:
+Run:
 
 ```powershell
 git branch -M main
-git remote add origin https://github.com/<YOUR-USERNAME>/<YOUR-REPO-NAME>.git
+git remote add origin https://github.com/Hesham-Katabi/CoAbility.git
 git push -u origin main
 ```
 

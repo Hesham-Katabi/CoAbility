@@ -7,3 +7,14 @@ vendor/
 *.log
 .DS_Store
 Thumbs.db
+
+# Environment variables & secrets
+.env*
+
+# IDE & Editor configurations
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+

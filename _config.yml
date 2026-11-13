@@ -7,9 +7,9 @@ description: >-
   and individuals with disabilities through accessible, innovative, and personalized
   3D-printed assistive devices.
 
-# URL settings (leave baseurl empty unless deploying to a GitHub Pages project subfolder like /coability-website)
-baseurl: ""
-url: ""
+# URL settings for GitHub Pages deployment (https://Hesham-Katabi.github.io/CoAbility)
+baseurl: "/CoAbility"
+url: "https://Hesham-Katabi.github.io"
 
 # Markdown & Syntax Highlighting
 markdown: kramdown
