@@ -92,7 +92,7 @@ git push -u origin main
 3. Choose the `main` branch and `/ (root)` folder, then click **Save**.
 4. GitHub Pages will build and deploy your site in ~1 minute!
 
-*(Note: If your repository is published under a subfolder URL like `https://<user>.github.io/<repo>/`, simply set `baseurl: "/<repo>"` in `_config.yml`).*
+*(Note: Since this site is connected to custom domain `coability.org`, `baseurl` in `_config.yml` is set to `""` so all assets and links resolve from the domain root).*
 
 ---
 
