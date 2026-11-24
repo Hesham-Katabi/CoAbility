@@ -52,10 +52,10 @@ const COABILITY_TEAM = [
     linkedin: "https://www.linkedin.com/"
   },
   {
-    id: "collin",
-    name: "Collin",
+    id: "colin-sarabosing",
+    name: "Colin Sarabosing",
     role: "Fabrication & Hardware Lead",
-    initials: "C",
+    initials: "CS",
     avatarColor: "from-blue-600 to-indigo-600",
     image: null,
     shortTeaser: "Managing printer fleet operations, print quality, and material durability.",
@@ -64,10 +64,10 @@ const COABILITY_TEAM = [
     linkedin: ""
   },
   {
-    id: "emily",
-    name: "Emily",
+    id: "emily-nong",
+    name: "Emily Nong",
     role: "Creative Design & Experience",
-    initials: "E",
+    initials: "EN",
     avatarColor: "from-cyan-500 to-emerald-400",
     image: null,
     shortTeaser: "Creating approachable, empowering, and destigmatizing assistive aesthetics.",

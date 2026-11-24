@@ -57,10 +57,10 @@
     - "Accessibility Testing"
   linkedin: "https://www.linkedin.com/"
 
-- id: "collin"
-  name: "Collin"
+- id: "colin-sarabosing"
+  name: "Colin Sarabosing"
   role: "Fabrication & Hardware Lead"
-  initials: "C"
+  initials: "CS"
   avatar_color: "from-blue-600 to-indigo-600"
   image: null
   short_teaser: "Managing printer fleet operations, print quality, and material durability."
@@ -71,10 +71,10 @@
     - "Hardware"
   linkedin: ""
 
-- id: "emily"
-  name: "Emily"
+- id: "emily-nong"
+  name: "Emily Nong"
   role: "Creative Design & Experience"
-  initials: "E"
+  initials: "EN"
   avatar_color: "from-cyan-500 to-emerald-400"
   image: null
   short_teaser: "Creating approachable, empowering, and destigmatizing assistive aesthetics."

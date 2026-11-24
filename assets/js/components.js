@@ -307,26 +307,66 @@ function getSchematicGraphic(type) {
 }
 
 /**
- * Accessible Contact Form Handler with Validation and Accessible Feedback
+ * Accessible Contact Form Handler with URL Hash Auto-Selection, Validation, and Accessible Feedback
  */
 function initContactFormIfPresent() {
   const form = document.getElementById('coability-contact-form');
   const statusMessage = document.getElementById('form-status-message');
+  const interestSelect = document.getElementById('contact-interest');
+  const formCard = document.getElementById('inquiry-form-card') || form;
 
   if (!form || !statusMessage) return;
+
+  // Auto-select topic and smoothly scroll to form when arriving via footer/project links
+  function syncFormWithHash() {
+    const hash = window.location.hash.toLowerCase();
+    if (!hash || !interestSelect) return;
+
+    if (hash === '#suggest' || hash === '#request' || hash === '#device') {
+      for (let i = 0; i < interestSelect.options.length; i++) {
+        const val = interestSelect.options[i].value;
+        if (val.includes('Suggest a new assistive device') || val.includes('seeking an assistive device')) {
+          interestSelect.selectedIndex = i;
+          break;
+        }
+      }
+      setTimeout(() => {
+        formCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const msgField = form.querySelector('#contact-message');
+        if (msgField) msgField.focus();
+      }, 100);
+    } else if (hash === '#volunteer' || hash === '#maker') {
+      for (let i = 0; i < interestSelect.options.length; i++) {
+        const val = interestSelect.options[i].value;
+        if (val.includes('volunteer')) {
+          interestSelect.selectedIndex = i;
+          break;
+        }
+      }
+      setTimeout(() => {
+        formCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const nameField = form.querySelector('#contact-name');
+        if (nameField) nameField.focus();
+      }, 100);
+    }
+  }
+
+  // Run on page load and on dynamic hashchange
+  syncFormWithHash();
+  window.addEventListener('hashchange', syncFormWithHash);
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
     const name = form.querySelector('#contact-name').value.trim();
     const email = form.querySelector('#contact-email').value.trim();
-    const interest = form.querySelector('#contact-interest').value;
+    const interest = interestSelect ? interestSelect.value : '';
     const message = form.querySelector('#contact-message').value.trim();
 
-    if (!name || !email || !message) {
+    if (!name || !email || !message || !interest) {
       statusMessage.className = 'mt-6 p-4 rounded-xl bg-red-50 border border-red-200 text-red-800 text-sm';
       statusMessage.setAttribute('role', 'alert');
-      statusMessage.innerHTML = '<strong>Please complete all required fields.</strong> Ensure your name, email, and message are provided.';
+      statusMessage.innerHTML = '<strong>Please complete all required fields.</strong> Ensure your name, email, how you would like to connect, and message are provided.';
       statusMessage.classList.remove('hidden');
       statusMessage.focus();
       return;
@@ -357,5 +397,6 @@ function initContactFormIfPresent() {
     statusMessage.focus();
 
     form.reset();
+    if (interestSelect) interestSelect.selectedIndex = 0;
   });
 }
