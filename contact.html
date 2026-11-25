@@ -81,7 +81,13 @@ description: "Get involved with CoAbility. Connect with our team as a volunteer 
         </p>
       </div>
 
-      <form id="coability-contact-form" novalidate>
+      <form id="coability-contact-form" action="https://formsubmit.co/info@coability.org" method="POST" novalidate>
+        <!-- Spam Prevention & Routing Configuration -->
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" id="form-subject" name="_subject" value="New Inquiry from CoAbility Website">
+
         <div class="space-y-6">
           
           <!-- Full Name Field -->

@@ -28,8 +28,8 @@ const COABILITY_TEAM = [
     linkedin: "https://www.linkedin.com/"
   },
   {
-    id: "jonny-chang-tang",
-    name: "Jonny Chang-Tang",
+    id: "jonathan-chan-tang",
+    name: "Jonathan Chan-Tang",
     role: "Design & Prototyping Lead",
     initials: "JC",
     avatarColor: "from-blue-700 to-indigo-500",

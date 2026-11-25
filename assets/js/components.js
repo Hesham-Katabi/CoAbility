@@ -355,13 +355,17 @@ function initContactFormIfPresent() {
   syncFormWithHash();
   window.addEventListener('hashchange', syncFormWithHash);
 
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const name = form.querySelector('#contact-name').value.trim();
     const email = form.querySelector('#contact-email').value.trim();
     const interest = interestSelect ? interestSelect.value : '';
     const message = form.querySelector('#contact-message').value.trim();
+    const honey = form.querySelector('input[name="_honey"]')?.value;
+
+    // Reject automated spam submissions silently
+    if (honey) return;
 
     if (!name || !email || !message || !interest) {
       statusMessage.className = 'mt-6 p-4 rounded-xl bg-red-50 border border-red-200 text-red-800 text-sm';
@@ -372,31 +376,84 @@ function initContactFormIfPresent() {
       return;
     }
 
-    // Success State Confirmation
-    statusMessage.className = 'mt-6 p-6 rounded-2xl bg-gradient-to-r from-blue-50 to-sky-50 border border-blue-200 text-slate-800 text-sm shadow-sm';
-    statusMessage.setAttribute('role', 'status');
-    statusMessage.setAttribute('tabindex', '-1');
-    statusMessage.innerHTML = `
-      <div class="flex items-start gap-3">
-        <div class="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center flex-shrink-0 mt-0.5" aria-hidden="true">
-          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
-          </svg>
-        </div>
-        <div>
-          <h4 class="text-base font-bold text-slate-900 mb-1">Thank you for connecting with CoAbility, ${name}!</h4>
-          <p class="text-slate-600 mb-2 leading-relaxed">
-            Your inquiry regarding <strong>${interest || 'General Information'}</strong> has been received. CoAbility is actively growing its community network, and we will follow up with you as development progresses.
-          </p>
-          <span class="text-xs text-blue-700 font-medium">CoAbility Volunteer & Inquiries Desk</span>
-        </div>
-      </div>
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalBtnHtml = submitBtn.innerHTML;
+    submitBtn.disabled = true;
+    submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
+    submitBtn.innerHTML = `
+      <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white inline-block" fill="none" viewBox="0 0 24 24">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+      </svg>
+      <span>Sending Inquiry...</span>
     `;
-    statusMessage.classList.remove('hidden');
-    statusMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    statusMessage.focus();
 
-    form.reset();
-    if (interestSelect) interestSelect.selectedIndex = 0;
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/info@coability.org', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          interest: interest,
+          message: message,
+          _subject: `[CoAbility Inquiry] ${interest} - from ${name}`,
+          _replyto: email
+        })
+      });
+
+      const data = await response.json();
+
+      if (response.ok && (data.success === 'true' || data.success === true)) {
+        statusMessage.className = 'mt-6 p-6 rounded-2xl bg-gradient-to-r from-blue-50 to-sky-50 border border-blue-200 text-slate-800 text-sm shadow-sm';
+        statusMessage.setAttribute('role', 'status');
+        statusMessage.setAttribute('tabindex', '-1');
+        statusMessage.innerHTML = `
+          <div class="flex items-start gap-3">
+            <div class="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center flex-shrink-0 mt-0.5" aria-hidden="true">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+              </svg>
+            </div>
+            <div>
+              <h4 class="text-base font-bold text-slate-900 mb-1">Thank you for connecting with CoAbility, ${name}!</h4>
+              <p class="text-slate-600 mb-2 leading-relaxed">
+                Your message regarding <strong>${interest}</strong> has been transmitted directly to our team at <strong>info@coability.org</strong>. We will review your inquiry and follow up with you shortly.
+              </p>
+              <span class="text-xs text-blue-700 font-medium">CoAbility Inquiries Desk &bull; info@coability.org</span>
+            </div>
+          </div>
+        `;
+        form.reset();
+        if (interestSelect) interestSelect.selectedIndex = 0;
+      } else {
+        throw new Error(data.message || 'Submission failed');
+      }
+    } catch (err) {
+      statusMessage.className = 'mt-6 p-5 rounded-2xl bg-amber-50 border border-amber-200 text-slate-800 text-sm';
+      statusMessage.setAttribute('role', 'alert');
+      statusMessage.innerHTML = `
+        <div class="flex items-start gap-3">
+          <div class="w-7 h-7 rounded-full bg-amber-500 text-white flex items-center justify-center flex-shrink-0 mt-0.5 text-xs font-bold">!</div>
+          <div>
+            <h4 class="text-sm font-bold text-slate-900 mb-1">Could not send automatically</h4>
+            <p class="text-slate-600 text-xs leading-relaxed mb-2">
+              We encountered a temporary network delay. You can send your message directly to our team at 
+              <a href="mailto:info@coability.org" class="font-bold text-blue-600 underline">info@coability.org</a>.
+            </p>
+          </div>
+        </div>
+      `;
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+      submitBtn.innerHTML = originalBtnHtml;
+      statusMessage.classList.remove('hidden');
+      statusMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      statusMessage.focus();
+    }
   });
 }
