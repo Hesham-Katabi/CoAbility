@@ -362,7 +362,7 @@ function initContactFormIfPresent() {
     const email = form.querySelector('#contact-email').value.trim();
     const interest = interestSelect ? interestSelect.value : '';
     const message = form.querySelector('#contact-message').value.trim();
-    const honey = form.querySelector('input[name="_honey"]')?.value;
+    const honey = form.querySelector('input[name="_gotcha"]')?.value;
 
     // Reject automated spam submissions silently
     if (honey) return;
@@ -389,7 +389,7 @@ function initContactFormIfPresent() {
     `;
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/info@coability.org', {
+      const response = await fetch('https://formspree.io/f/xyewopql', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -407,7 +407,7 @@ function initContactFormIfPresent() {
 
       const data = await response.json();
 
-      if (response.ok && (data.success === 'true' || data.success === true)) {
+      if (response.ok) {
         statusMessage.className = 'mt-6 p-6 rounded-2xl bg-gradient-to-r from-blue-50 to-sky-50 border border-blue-200 text-slate-800 text-sm shadow-sm';
         statusMessage.setAttribute('role', 'status');
         statusMessage.setAttribute('tabindex', '-1');
@@ -430,7 +430,8 @@ function initContactFormIfPresent() {
         form.reset();
         if (interestSelect) interestSelect.selectedIndex = 0;
       } else {
-        throw new Error(data.message || 'Submission failed');
+        const errorText = data.errors ? data.errors.map(err => err.message).join(', ') : (data.error || 'Submission failed');
+        throw new Error(errorText);
       }
     } catch (err) {
       statusMessage.className = 'mt-6 p-5 rounded-2xl bg-amber-50 border border-amber-200 text-slate-800 text-sm';
@@ -441,7 +442,7 @@ function initContactFormIfPresent() {
           <div>
             <h4 class="text-sm font-bold text-slate-900 mb-1">Could not send automatically</h4>
             <p class="text-slate-600 text-xs leading-relaxed mb-2">
-              We encountered a temporary network delay. You can send your message directly to our team at 
+              We encountered an issue submitting your inquiry (${err.message || 'Network error'}). You can also email us directly at 
               <a href="mailto:info@coability.org" class="font-bold text-blue-600 underline">info@coability.org</a>.
             </p>
           </div>
